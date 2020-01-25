@@ -1,0 +1,18 @@
+# Packages
+ &PACKAGES
+ useGMRedi      =.true.,
+ useKPP         =.true.,
+ usePP81        =.false.,
+ useSEAICE      =.true.,
+ useThSIce      =.false.,
+ useShelfIce    =.true.,
+ useDOWN_SLOPE  =.false.,
+ useMNC         =.false.,
+ useEXF         =.true.,
+ useOBCS        =.true.,
+ useDiagnostics =.true.,
+ usePTRACERS    =.false.,
+ useGCHEM       =.false.,
+ useRBCS        =.false.,
+ &
+  

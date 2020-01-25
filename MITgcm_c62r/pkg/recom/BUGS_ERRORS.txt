@@ -1,0 +1,18 @@
+This is a list of bugs/errors/open issues and other things that could
+be better in REcoM2. As something is repaired it will be marked in
+this list as solved
+
+today: Dec 19, 2011
+
+- carbonate equilibrium: Alkalinity does not include the contribution
+  from Silicate yet
+
+- carbonate equilibrium: if pH goes outside the predefined maximum and
+  minimum for the root-finding routine it does strange
+  things. Tingting has coded a fix, but I am not sure it works
+  correctly under all circumstances
+
+- pCO2 in the atmosphere cannot yet be calculated interactively
+
+- recom_sms: should phytoplankton respiration perhaps depend on
+  temperature?

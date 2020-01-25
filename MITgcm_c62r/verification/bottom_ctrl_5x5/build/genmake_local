@@ -1,0 +1,2 @@
+AD_OPTFILE='../code_ad/adjoint_staf'
+USE_EXTENDED_SRC='t'

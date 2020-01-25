@@ -1,0 +1,20 @@
+/.cvsignore/1.11/Fri Aug 31 00:15:54 2007//Tcheckpoint62r
+/README/1.17/Tue Jan 29 11:25:54 2008//Tcheckpoint62r
+D/build////
+D/code////
+D/code_ad////
+D/code_ad_seaice_ocean////
+D/code_ad_seaice_only////
+D/input////
+D/input.fd////
+D/input.hb87////
+D/input.salt_plume////
+D/input_ad////
+D/input_ad.evp////
+D/input_ad.noseaice////
+D/input_ad.noseaicedyn////
+D/input_ad_seaice_ocean////
+D/input_ad_seaice_only////
+D/matlab////
+D/results////
+D/run////

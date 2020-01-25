@@ -1,0 +1,237 @@
+October 16 2012, Christoph Voelker
+
+Implemented additional diagnostics to calculate export fluxes of PON, 
+POC, BSi and Calc at some depth
+
+- introduced new compiler option RECOM_EXPORT_DIAGNOSTICS (in RECOM_OPTIONS.h)
+  to switch on/off the export flux diagnostics
+- Increased the number of 2-dimensional recom diagnostics NDiagsRecom2D 
+  by four in RECOM.h to accomodate the fluxes, when the switch is set.
+- implemented one additonal 2-d output field export(i,j) in
+  recom_sinking.F, that contains the calculated fluxes at the upper
+  boundary of layer KEXP. At the moment KEXP is hardcoded to 7 (CHANGE 
+  this at some point!)
+- took care that the additional output field of recom_sinking is also
+  defined in the calling routine recom_sms.F, and that the contents is
+  then added to the 2-d diagnostics diags2d(i,j,n). n=10 stands for 
+  flux of particulate nitrogen (PhyN+DiaN+DetN), n=11 for particulate
+  organic carbon (PhyC+DiaC+DetC), n=12 for calcite (PhyCalc+DetCalc)
+  and n=13 for opal (DiaSi+DetSi).
+- The 2-D diagnistics are then transferred to the new diagnostic fields
+  'EXPORTN ', 'EXPORTC ', 'EXPCALC ' and 'EXPORTSI' in recom_forcing.F
+- these new export fields are defined in recom_diagnostics_init.F
+
+(affected: RECOM_OPTIONS.h, RECOM.H, recom_sinking.F, recom_sms.F,
+recom_forcing.F, recom_diagnostics_init.F)
+
+-----------------------------------------------------------------------
+Bug correction, October 16, 2012, Christoph Voelker
+
+in recom_forcing.F the diagnostic DIAFFE was filled with
+recom_diag_2Dfields(i,j,8) instead of recom_diag_2Dfields(i,j,9). So, 
+effectively the diagnostic contained the diagenetic silica flux, 
+not the iron flux
+
+(affected: recom_forcing.F)
+
+-----------------------------------------------------------------------
+October 10, 2012, Christoph Voelker
+
+impemented a new option RECOM_FE_RECYCLING_SHORT in RECOM_OPTIONS.h;
+if set, this option causes that all processes that lead to the production 
+of DOC directly increase dissolved iron, instead of releasing
+dissolved iron from organic matter when DOC is respired. Effectively
+this means that all organic species of iron are directly bioavailable. 
+
+(affected: RECOM_OPTIONS.h, recom_sms.F)
+
+-----------------------------------------------------------------------
+Bug correction, september 2012, Tingting Wang
+
+in the present version or REcoM, iron is released in dissolved form 
+whenever organic carbon is respired to inorganic carbon. This implicitly
+assumes that iron in dissolved organic carbon is *NOT* bioavailable. 
+While this is a possible way of description, it needs at least to be done
+consistently. In recom_sms.F, however, there was one inconsistency: The
+release of organic carbon from zooplankton was also counted as a release
+of dissolved iron. This led to the same iron being remineralized twice:
+when zooplankkton excrete DOC and then again, when this DOC is respired. 
+
+This was corrected by removing one line of code in recom_sms.F, where
+sms(....,ife) was increased by lossC_z * hetC
+
+(affected: recom_sms.F)
+
+-----------------------------------------------------------------------
+Bug correction, July 2012, Christoph Voelker
+
+Sebastian Sonntag has pointed me to a bug in recom_insolation.F that
+concerns the calculation of the incident angle of light under water.
+
+The angle is derived from Snellius' law which states that
+
+sin(phi1) / sin(phi2) = n
+
+where phi1 is the angle of the direction of the light with the
+vertical in the atmosphere, phi2 is the same angle under water, and n
+is the refraction index of the medium, for water roughly 1.33.
+
+from Snellius' law we can follow:
+
+sin(phi2)^2 = sin(phi1)^2 / n^2
+
+so that (using cos^2 = 1 - sin^2):
+
+cos(phi2)^2 = (1 - sin(phi2)^2) = (1 - sin(phi1)^2 / n^2 )
+   = (1 - (1 - cos(phi1)^2) / n^2 )
+
+This would mean that in the code we should have
+
+cosAngleOfIncidence(i,j) = SQRT( 1.
+     &       - (1. - cosAngleNoon(i,j)**2)/nWater**2 )
+
+but instead we had
+
+cosAngleOfIncidence(i,j) = SQRT( 1.
+     &       - ( (1. - cosAngleNoon(i,j)**2)/nWater )**2 )
+
+The additional brackets cause that instead of sin(phi1)^2 we
+calculated sin(phi1)^4. The difference vanishes for vertical (phi1=0)
+and horizontal (phi1=90) incidence, but generally our calculated angle
+is somewhat lower than it should be, i.e. we underestimated the angle
+in the water, or, which is equivalent, overestimated the penetration of
+light into the the water (the lower the angle, the deeper does light
+penetrate).
+This was changed.
+
+(affected: recom_insolation.F)
+
+-----------------------------------------------------------------------
+Not yet described: 
+
+vertically incresing sinking speed
+
+-----------------------------------------------------------------------
+September 16, 2011, Christoph Voelker
+
+Correction of three bugs in treating the sediment: 
+
+- when organic nitrogen from the sediment is converted to dissolved
+  inorganic nitrogen in the lowermost model box (done on recom_sms.F),
+  alkalinity should also be changed (corresponding to the transfer
+  from DON to DIN). This had been forgotten. Also, when POC is
+  remineralized, this should not only be a source of DIC, but also of
+  dissolved Fe. 
+- The units of the sediment diagnostic variables NBENTHOS, CBENTHOS,
+  SBENTHOS and CALCBENT that was defined in recom_diagnostics_init.F
+  was set wrong: These variables are concentrations (unit mmol/m^3),
+  not vertically integrated concentrations (mmol/m^2). 
+- I had forgotten to write/read the sediment CaCO3 concentration field
+  into/from the recom-pickup files. This is now added (but only if
+  RECOM_CALCIFICATION is defined)
+
+(affected: recom_sms.F, recom_diagnostics_init.F, recom_checkpoint.F)
+
+-----------------------------------------------------------------------
+June 16, 2011, Christoph Voelker
+
+If RECOM_ATMOSPCO2_HISTORY is set, the atmospheric pCO2 field is now
+set to a spatially uniform value that is interpolated in time from the
+(typically annual) time-series CO2ATM that has been initialised in 
+recom_init_fixed.F. Also, a new namelist is defined in data.recom,
+namely RECOM_ATMOSPCO2
+
+(affected: recom_external_fields_load.F, recom_readparms.F)
+
+-----------------------------------------------------------------------
+June 15, 2011, Christoph Voelker
+
+replaced calls to MDSWRITEFIELD by calls to WRITE_REC_3D_RL; the former is
+outdated, it still exists, but only writes out an error message. I checked
+how to replace it by copying how it is done in land/land_write_pickup.F
+
+(affected: recom_checkpoint.F)
+
+-----------------------------------------------------------------------
+June 11, 2011, Christoph Voelker
+
+defined a new define switch: RECOM_ATMOSPCO2_HISTORY. If this is set, the 
+model initially reads in a file of annual atmospheric pCO2 and then adapts
+the atmospheric pCO2 following how it is done in the DIC package if dic_int2=2.
+At present this is not complete; missing is the time interpolation. 
+
+(affected so far: RECOM_OPTIONS.h, RECOM.h, RECOM_PARAMS.h, recom_readparms.F, 
+recom_init_fixed.F)
+
+-----------------------------------------------------------------------
+May 25, 2011, Christoph Voelker
+
+Removed a small bug in recom_external_fields_load.F: The time interpolation 
+for dust deposition was done in such a way that only the last dust deposition 
+mattered: instead of 
+            feDustDeposit(i,j,bi,bj) = bWght*feDustDeposit0(i,j,bi,bj)
+     &                                +aWght*feDustDeposit1(i,j,bi,bj)
+there was
+            feDustDeposit(i,j,bi,bj) = bWght*feDustDeposit0(i,j,bi,bj)
+     &                                +aWght*feDustDeposit0(i,j,bi,bj)
+
+Also added initialisation of recombenthicCaCO3 in recom_init_vari.F
+
+(affected: recom_external_fields_load.F, recom_init_vari.F)
+
+-----------------------------------------------------------------------
+May 24, 2011, Christoph Voelker
+
+Added Tingtings code for a direct loss of heterotrophs to dissolved organic
+matter ('peeing'). This introduces new parameters lossC_z and lossN_z into
+data.recom
+Also added Tingtings more consequent differentiation between the sinking of 
+small phytoplankton and of diatoms (Vdia)
+
+(affected: recom_sms.F, recom_readparms.F, RECOM_PARAMS.h)
+
+-----------------------------------------------------------------------
+May 23, 2011, Christoph Voelker
+
+added one new diagnostic, 'HPlus   ' in recom_diagnostics_init.F and 
+took care that the corresponding diagnostic is filled in recom_forcing.F
+
+(affected: recom_diagnostics_init.F, recom_forcing.F)
+
+-----------------------------------------------------------------------
+May 11, 2011, Christoph Voelker
+
+corrected two bugs in recom_sms.F found by Tingting: 
+quantities relatid to silica uptake by diatoms were calculated
+with parameters for the small phytoplankton group. 
+
+(affected: recom_sms.F)
+
+-----------------------------------------------------------------------
+May 2, 2011, Christoph Voelker
+
+Changes I have made to bring REcoM2 up-to-date with
+MITgcm, version 62r:
+
+1) recom_forcing.F: The array AREA used to be 5-dimensional. Since
+version 61r the vertical dimension is gone and it is
+4-dimensional.
+
+2) recom_init_vari.F and recom_external_fields_load.F: references
+to the old macros (defined in CPP_EEMACROS.h) _EXCH_XY_R4 have been
+replaced by _EXCH_XY_RS
+
+3) recom_insolation.F: Since version 62o the old flag useSphereF=.true.
+has been replaced by selectCoriMap=2. So I replaced 
+'if ( .not. useSphereF )' by 'if ( selectCoriMap .LT. 2 )'
+
+4) the subroutine diagnostics_add2list was renamed to
+diagnostics_addtolist in version 62d. All calls were replaced in
+recom_diagnostics.F 
+
+5) in do_fields_blocking_exchanges.F gibt es einen Aufruf von
+ptracers_fields_blocking_exchanges; der code dafuer war irgendwie
+nicht da. Hab ich von Martins aktueller REcoM(1)-Version genommen. 
+
+-----------------------------------------------------------------------
+

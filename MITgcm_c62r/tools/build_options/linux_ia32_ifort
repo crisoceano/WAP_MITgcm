@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+# $Header: /u/gcmpack/MITgcm/tools/build_options/linux_ia32_ifort,v 1.16 2010/03/21 17:58:17 jmc Exp $
+# $Name: checkpoint62r $
+
+#  Ed Hill
+#
+#  tested on faulks, 20030818
+#
+#  Build options for the intel 8.0 fortran compiler
+#  the compiler is now called ifort (not ifc) and it appears to
+#  need -DWORDLENGTH=1 and not -DWORDLENGTH=4 (which is what ifc 6.0) used to have.
+#  ph: use ifort compiler options -convert big_endian -assume byterecl
+
+FC=ifort
+F90C=ifort
+LINK='ifort -static'
+
+DEFINES='-DWORDLENGTH=4'
+CPP='cpp  -traditional -P'
+F90FIXEDFORMAT='-fixed -Tf'
+EXTENDED_SRC_FLAG='-132'
+#OMPFLAG='-openmp'
+
+###INCLUDES='-I/ocean/data4/ce107/netcdf-3.6.1/Linux-i686-intel8/include'
+###LIBS='-L/ocean/data4/ce107/netcdf-3.6.1/Linux-i686-intel8/lib -lnetcdf'
+INCLUDES='-I/usr/local/pkg/netcdf/include'
+LIBS='-L/usr/local/pkg/netcdf/lib -lnetcdf'
+
+#  Note that the -mp switch is for ieee "maintain precision" and is
+#  roughly equivalent to -ieee
+if test "x$IEEE" = x ; then
+    FOPTIM='-O3 -align'
+    F90OPTIM='-O3'
+#P3 FOPTIM=$FOPTIM' -tpp6 -xWKM'
+#P4 FOPTIM=$FOPTIM' -tpp7 -xWKM'
+    FFLAGS="$FFLAGS -w95 -W0 -WB -convert big_endian -assume byterecl"
+else
+    FOPTIM='-O0 -noalign'
+    F90OPTIM='-O0 -g'
+    FFLAGS="$FFLAGS -w95 -W0 -WB -xN -pc64 -convert big_endian -assume byterecl"
+   #FFLAGS="$FFLAGS -mp -w95 -W0 -WB"
+fi
+#- might want to use '-r8' for fizhi pkg:
+#FFLAGS="$FFLAGS -r8"
+
+F90FLAGS=$FFLAGS
+

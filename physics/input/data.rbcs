@@ -1,0 +1,24 @@
+# RBCS package parameters:
+ &RBCS_PARM01
+    tauRelaxT=0.,
+    tauRelaxS=0.,
+#   relaxMaskFile='rbcs_mask_T.bin','rbcs_mask_S.bin',
+    relaxMaskFile(1) = ' '
+    relaxMaskFile(2) = ' '   
+    relaxMaskFile(3)='mask_rbcs.bin',
+    relaxTFile=' ',
+    relaxSFile=' ',
+    useRBCtemp=.FALSE.,
+    useRBCsalt=.FALSE.,
+    rbcsIniter=0,
+    rbcsForcingPeriod=0.,
+    rbcsForcingCycle=0.,
+    useRBCptracers = .TRUE.,
+ &
+
+# RBCS for pTracers (read this namelist only when ptracers pkg is compiled)
+ &RBCS_PARM02
+  useRBCptrnum(3)    = .TRUE.,
+  tauRelaxPTR(3)     = 1200.,
+  relaxPtracerFile(3)='alk_C_glodap_taka.bin',
+ &

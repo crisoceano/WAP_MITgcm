@@ -1,0 +1,27 @@
+# SEAICE parameters
+ &SEAICE_PARM01
+      SEAICEwriteState   = .TRUE.,
+      SEAICE_initialHEFF = 1.0,
+      SEAICE_deltaTtherm = 3600.,
+      SEAICE_deltaTdyn   = 3600.,
+      SEAICEuseDYNAMICS  =.FALSE.,
+      LSR_ERROR          = 1.E-12,
+      ICE2WATR           = 0.92,
+# does not have an effect here
+# for backward compatibility turn off advection
+# of snow
+ SEAICEadvSnow = .FALSE.,
+ SEAICEuseFlooding = .FALSE.,
+# for backward compatibility only:
+ SEAICE_cpAir       = 1.0039560439560439e+03,
+ SEAICE_lhSublim    = 2.8340219780219775e+06,
+ SEAICE_rhoAir      = 1.3E0,
+ &
+#
+ &SEAICE_PARM02
+ mult_smrarea = 100.0,
+ smrareadatfile = 'icearea_daily92to03_20x16.labsea1979',
+ wsmrarea0 = 0.5,
+ wmean_smrarea = 0.5,
+ smrarea_errfile = ' ',
+ &

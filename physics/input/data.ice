@@ -1,0 +1,5 @@
+# THSICE parameters
+ &THSICE_CONST
+ &
+ &THSICE_PARM01
+ &
