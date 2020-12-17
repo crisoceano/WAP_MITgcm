@@ -1,0 +1,122 @@
+ &PTRACERS_PARM01
+ PTRACERS_numInUse=21,
+ PTRACERS_Iter0=0,
+ PTRACERS_dumpFreq = 86400.0
+ PTRACERS_taveFreq = 2592000.0
+ PTRACERS_monitorFreq = 86400.0
+
+#
+ PTRACERS_EvPrRn = 21*0.,
+ PTRACERS_ref = 30*10., 30*2200., 30*2400., 30*0.01, 30*0.06, 30*0.1, 30*0., 30*0., 30*0.01, 30*0.06, 30*0.01, 30*0.06, 30*0.01, 30*0.06, 30*0.1, 30*0.01, 30*0., 30*20., 30*0.2, 30*0., 30*0.,
+ PTRACERS_advScheme=21*33,
+ PTRACERS_diffKh=21*0.E3,
+ PTRACERS_diffKr=21*2.E-5,
+ PTRACERS_useGMRedi=21*.TRUE.,
+ PTRACERS_useKPP=21*.TRUE.,
+# tracer 1 - DIN
+ PTRACERS_names(1)='DIN',
+ PTRACERS_long_names(1)='Dissolved Inorganic Nitrogen',
+ PTRACERS_units(1)='mmol/m^3',
+ PTRACERS_initialFile(1)='PTRACER01_rst.data',
+# tracer 2 - DIC
+ PTRACERS_names(2)='DIC',
+ PTRACERS_long_names(2)='Dissolved Inorganic Carbon (TCO2)',
+ PTRACERS_units(2)='mmol/m^3',
+ PTRACERS_initialFile(2)='PTRACER02_rst.data',
+# tracer 3 - Alk
+ PTRACERS_names(3)='Alk',
+ PTRACERS_long_names(3)='Total Alkalinity',
+ PTRACERS_units(3)='mmol/m^3',
+ PTRACERS_initialFile(3)='PTRACER03_rst.data',
+# tracer 4 - PhyN
+ PTRACERS_names(4)='PhyN',
+ PTRACERS_long_names(4)='Small phytoplankton Nitrogen',
+ PTRACERS_units(4)='mmol/m^3',
+ PTRACERS_initialFile(4)='PTRACER04_rst.data',
+# tracer 5 - PhyC
+ PTRACERS_names(5)='PhyC',
+ PTRACERS_long_names(5)='Small phytoplankton Carbon',
+ PTRACERS_units(5)='mmol/m^3',
+ PTRACERS_initialFile(5)='PTRACER05_rst.data',
+# tracer 6 - Chl
+ PTRACERS_names(6)='PChl',
+ PTRACERS_long_names(6)='Small phytoplankton Chlorophyll a',
+ PTRACERS_units(6)='mg/m^3',
+ PTRACERS_initialFile(6)='PTRACER06_rst.data',
+#PTRACERS_initialFile(6)='CHL_90x40x30.bin',
+# tracer 7 - detN
+ PTRACERS_names(7)='DetN',
+ PTRACERS_long_names(7)='Detritus Nitrogen',
+ PTRACERS_units(7)='mmol/m^3',
+ PTRACERS_initialFile(7)='PTRACER07_rst.data',
+# tracer 8 - detC
+ PTRACERS_names(8)='DetC',
+ PTRACERS_long_names(8)='Detritus Carbon',
+ PTRACERS_units(8)='mmol/m^3',
+ PTRACERS_initialFile(8)='PTRACER08_rst.data',
+# tracer 9 - HetN
+ PTRACERS_names(9)='HetN',
+ PTRACERS_long_names(9)='Heterotrophic Zooplankton Nitrogen',
+ PTRACERS_units(9)='mmol/m^3',
+ PTRACERS_initialFile(9)='PTRACER09_rst.data',
+# tracer 10 - HetC
+ PTRACERS_names(10)='HetC',
+ PTRACERS_long_names(10)='Heterotrophic Zooplankton Carbon',
+ PTRACERS_units(10)='mmol/m^3',
+ PTRACERS_initialFile(10)='PTRACER10_rst.data',
+# tracer 11 - DON
+ PTRACERS_names(11)='DON',
+ PTRACERS_long_names(11)='Dissolved organic Nitrogen',
+ PTRACERS_units(11)='mmol/m^3',
+ PTRACERS_initialFile(11)='PTRACER11_rst.data',
+# tracer 12 - detC
+ PTRACERS_names(12)='EOC',
+ PTRACERS_long_names(12)='Extra-cellular organic Carbon',
+ PTRACERS_units(12)='mmol/m^3',
+ PTRACERS_initialFile(12)='PTRACER12_rst.data',
+# tracer 13 - DiaN
+ PTRACERS_names(13)='DiaN',
+ PTRACERS_long_names(13)='Diatom Nitrogen',
+ PTRACERS_units(13)='mmol/m^3',
+ PTRACERS_initialFile(13)='PTRACER13_rst.data',
+# tracer 14 - DiaC
+ PTRACERS_names(14)='DiaC',
+ PTRACERS_long_names(14)='Diatom Carbon',
+ PTRACERS_units(14)='mmol/m^3',
+ PTRACERS_initialFile(14)='PTRACER14_rst.data',
+# tracer 15 - Si
+ PTRACERS_names(15)='DiaChl',
+ PTRACERS_long_names(15)='Diatom Chlorophyll a',
+ PTRACERS_units(15)='mg/m^3',
+ PTRACERS_initialFile(15)='PTRACER15_rst.data',
+# tracer 16 - DiaSi
+ PTRACERS_names(16)='DiaSi',
+ PTRACERS_long_names(16)='Diatom Silicate',
+ PTRACERS_units(16)='mmol/m^3',
+ PTRACERS_initialFile(16)='PTRACER16_rst.data',
+# tracer 17 - detSi
+ PTRACERS_names(17)='DetSi',
+ PTRACERS_long_names(17)='Detritus Silicate',
+ PTRACERS_units(17)='mmol/m^3',
+ PTRACERS_initialFile(17)='PTRACER17_rst.data',
+# tracer 18 - Si
+ PTRACERS_names(18)='Si',
+ PTRACERS_long_names(18)='Dissolved Silicate',
+ PTRACERS_units(18)='mmol/m^3',
+ PTRACERS_initialFile(18)='PTRACER18_rst.data',
+# tracer 19 - Fe
+ PTRACERS_names(19)='dFe',
+ PTRACERS_long_names(19)='Dissolved Iron',
+ PTRACERS_units(19)='mumol/m^3',
+ PTRACERS_initialFile(19)='PTRACER19_rst.data',
+# tracer 20 - phyCalc
+ PTRACERS_names(20)='PhyCalc',
+ PTRACERS_long_names(20)='phytoplankton CaCO3',
+ PTRACERS_units(20)='mmol/m^3',
+ PTRACERS_initialFile(20)='PTRACER20_rst.data',
+# tracer 21 - detCalc
+ PTRACERS_names(21)='DetCalc',
+ PTRACERS_long_names(21)='detritus CaCO3',
+ PTRACERS_units(21)='mmol/m^3',
+ PTRACERS_initialFile(21)='PTRACER21_rst.data',
+ &

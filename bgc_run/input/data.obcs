@@ -1,0 +1,149 @@
+# ***************
+# Open boundaries
+# ***************
+ &OBCS_PARM01
+ OB_Jnorth =   200*-1,
+ OB_Iwest =    240*1,
+ OB_Ieast =    240*-1,
+# OB_Jsouth =   1*1,
+#
+ useOBCSprescribe=.TRUE.,
+ useOBCSsponge=.TRUE.,
+ useOBCSbalance=.FALSE.,
+#
+ OBNtFile='OBNt_SO_025deg_Monthly_bedmap',
+ OBNsFile='OBNs_SO_025deg_Monthly_bedmap',
+ OBNuFile='OBNu_SO_025deg_Monthly_bedmap',
+ OBNvFile='OBNv_SO_025deg_Monthly_bedmap_newAdd0.000018651ms',
+ OBNaFile='OBNa_SO_025deg_MonthlyBELL_20140721_2c_bedmap',
+ OBNhFile='OBNh_SO_025deg_MonthlyBELL_20140721_2c_bedmap',
+ OBNuiceFile='OBNuice_SO_025deg_MonthlyBELL_20140721_2c_bedmap',
+ OBNviceFile='OBNvice_SO_025deg_MonthlyBELL_20140721_2c_bedmap',	
+# 
+ OBEtFile='OBEt_SO_025deg_Monthly_bedmap',
+ OBEsFile='OBEs_SO_025deg_Monthly_bedmap',
+ OBEuFile='OBEu_SO_025deg_Monthly_bedmap_newAdd0.000018651ms',
+ OBEvFile='OBEv_SO_025deg_Monthly_bedmap',
+ OBEaFile='OBEa_SO_025deg_MonthlyBELL_20140721_2c_bedmap',
+ OBEhFile='OBEh_SO_025deg_MonthlyBELL_20140721_2c_bedmap',
+ OBEuiceFile='OBEuice_SO_025deg_MonthlyBELL_20140721_2c_bedmap',
+ OBEviceFile='OBEvice_SO_025deg_MonthlyBELL_20140721_2c_bedmap',
+# 
+# OBStFile='OBSt_SO_025deg_Monthly',
+# OBSsFile='OBSs_SO_025deg_Monthly',
+# OBSuFile='OBSu_SO_025deg_Monthly',
+# OBSvFile='OBSv_SO_025deg_Monthly',
+# OBSaFile='OBSa_SO_025deg_MonthlyBELL_20140721_2c',
+# OBShFile='OBSh_SO_025deg_MonthlyBELL_20140721_2c',
+# OBSuiceFile='OBSuice_SO_025deg_MonthlyBELL_20140721_2c',
+# OBSviceFile='OBSvice_SO_025deg_MonthlyBELL_20140721_2c',	
+#
+ OBWtFile='OBWt_SO_025deg_Monthly_bedmap',
+ OBWsFile='OBWs_SO_025deg_Monthly_bedmap',
+ OBWuFile='OBWu_SO_025deg_Monthly_bedmap_newAdd0.000018651ms',
+ OBWvFile='OBWv_SO_025deg_Monthly_bedmap',
+ OBWaFile='OBWa_SO_025deg_MonthlyBELL_20140721_2c_bedmap',
+ OBWhFile='OBWh_SO_025deg_MonthlyBELL_20140721_2c_bedmap',
+ OBWuiceFile='OBWuice_SO_025deg_MonthlyBELL_20140721_2c_bedmap',
+ OBWviceFile='OBWvice_SO_025deg_MonthlyBELL_20140721_2c_bedmap',
+
+ OBNptrFile(1)='glodap_no3_clim_north.bin',
+ OBWptrFile(1)='glodap_no3_clim_west.bin',
+ OBEptrFile(1)='glodap_no3_clim_east.bin',
+
+ OBNptrFile(2)='glodap_dic_clim_north.bin', 
+ OBWptrFile(2)='glodap_dic_clim_west.bin', 
+ OBEptrFile(2)='glodap_dic_clim_east.bin',
+
+ OBNptrFile(3)='alk_N_glodap_taka.bin', 
+ OBWptrFile(3)='alk_W_glodap_taka.bin', 
+ OBEptrFile(3)='alk_E_glodap_taka.bin',
+
+ OBNptrFile(4)='PhyN_clim_north.bin', 
+ OBWptrFile(4)='PhyN_clim_west.bin', 
+ OBEptrFile(4)='PhyN_clim_east.bin',
+
+ OBNptrFile(5)='PhyC_clim_north.bin', 
+ OBWptrFile(5)='PhyC_clim_west.bin', 
+ OBEptrFile(5)='PhyC_clim_east.bin',
+
+ OBNptrFile(6)='PChl_clim_north.bin', 
+ OBWptrFile(6)='PChl_clim_west.bin', 
+ OBEptrFile(6)='PChl_clim_east.bin',
+
+ OBNptrFile(7)='DetN_clim_north.bin', 
+ OBWptrFile(7)='DetN_clim_west.bin', 
+ OBEptrFile(7)='DetN_clim_east.bin',
+
+ OBNptrFile(8)='DetC_clim_north.bin', 
+ OBWptrFile(8)='DetC_clim_west.bin', 
+ OBEptrFile(8)='DetC_clim_east.bin',
+
+ OBNptrFile(9)='HetN_clim_north.bin', 
+ OBWptrFile(9)='HetN_clim_west.bin', 
+ OBEptrFile(9)='HetN_clim_east.bin',
+
+ OBNptrFile(10)='HetC_clim_north.bin', 
+ OBWptrFile(10)='HetC_clim_west.bin', 
+ OBEptrFile(10)='HetC_clim_east.bin',
+
+ OBNptrFile(11)='DON_clim_north.bin', 
+ OBWptrFile(11)='DON_clim_west.bin', 
+ OBEptrFile(11)='DON_clim_east.bin',
+
+ OBNptrFile(12)='EOC_clim_north.bin', 
+ OBWptrFile(12)='EOC_clim_west.bin', 
+ OBEptrFile(12)='EOC_clim_east.bin',
+
+ OBNptrFile(13)='DiaN_clim_north.bin', 
+ OBWptrFile(13)='DiaN_clim_west.bin', 
+ OBEptrFile(13)='DiaN_clim_east.bin',
+
+ OBNptrFile(14)='DiaC_clim_north.bin', 
+ OBWptrFile(14)='DiaC_clim_west.bin', 
+ OBEptrFile(14)='DiaC_clim_east.bin',
+
+ OBNptrFile(15)='DiaChl_clim_north.bin', 
+ OBWptrFile(15)='DiaChl_clim_west.bin', 
+ OBEptrFile(15)='DiaChl_clim_east.bin',
+
+ OBNptrFile(16)='DiaSi_clim_north.bin', 
+ OBWptrFile(16)='DiaSi_clim_west.bin', 
+ OBEptrFile(16)='DiaSi_clim_east.bin',
+
+ OBNptrFile(17)='DetSi_clim_north.bin', 
+ OBWptrFile(17)='DetSi_clim_west.bin', 
+ OBEptrFile(17)='DetSi_clim_east.bin',
+
+ OBNptrFile(18)='glodap_si_clim_north.bin', 
+ OBWptrFile(18)='glodap_si_clim_west.bin', 
+ OBEptrFile(18)='glodap_si_clim_east.bin',
+
+ OBNptrFile(19)='dFe_clim_north.bin', 
+ OBWptrFile(19)='dFe_clim_west.bin', 
+ OBEptrFile(19)='dFe_clim_east.bin',
+
+ OBNptrFile(20)='PhyCalc_clim_north.bin', 
+ OBWptrFile(20)='PhyCalc_clim_west.bin', 
+ OBEptrFile(20)='PhyCalc_clim_east.bin',
+
+ OBNptrFile(21)='DetCalc_clim_north.bin', 
+ OBWptrFile(21)='DetCalc_clim_west.bin', 
+ OBEptrFile(21)='DetCalc_clim_east.bin',
+#
+&
+# 
+ &OBCS_PARM03
+ spongeThickness=5,
+# Outer 1 day, Inner 20 days
+ Urelaxobcsinner=1728000.,
+ Vrelaxobcsinner=1728000.,
+ Urelaxobcsbound=86400.,
+ Vrelaxobcsbound=86400.,
+# Outer 7 days, Inner 140 days
+# Urelaxobcsinner=12096000.,
+# Vrelaxobcsinner=12096000.,
+# Urelaxobcsbound=604800.,
+# Vrelaxobcsbound=604800.,
+&
+

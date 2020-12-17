@@ -1,0 +1,171 @@
+#
+# *********************
+# External Forcing Data
+# *********************
+ &EXF_NML_01
+ exf_albedo        = 0.15,
+ exf_scal_BulkCdn  = 1.015,
+ exf_iprec         = 32,
+ exf_yftype        = 'RL',
+ useExfYearlyFields= .TRUE.,
+ useExfCheckRange  = .FALSE.
+ &
+
+# *********************
+ &EXF_NML_02
+ atempstartdate1=19810101,
+ atempstartdate2=000000,
+ atempperiod=21600.0,
+#
+ precipstartdate1=19810101,
+ precipstartdate2=000000,
+ precipperiod=21600.0,
+#
+ uwindstartdate1=19810101,
+ uwindstartdate2=000000,
+ uwindperiod=21600.0,
+#
+ vwindstartdate1=19810101,
+ vwindstartdate2=000000,
+ vwindperiod=21600.0,
+#
+ aqhstartdate1=19810101,
+ aqhstartdate2=000000,
+ aqhperiod=21600.0,
+#
+ lwdownstartdate1=19810101,
+ lwdownstartdate2=000000,
+ lwdownperiod=21600.0,
+#
+ swdownstartdate1=19810101,
+ swdownstartdate2=000000,
+ swdownperiod=21600.0,
+#
+ apressurestartdate1=19810101,
+ apressurestartdate2=000000,
+ apressureperiod=21600.0,
+#
+# runoffstartdate1=19810101,
+# runoffstartdate2=000000,
+ runoffperiod=-12
+#
+ atempfile    = 'ERAinterim_tmp2m_degC',
+ precipfile   = 'ERAinterim_rain',
+ uwindfile    = 'ERAinterim_u10m',
+ vwindfile    = 'ERAinterim_v10m',
+ aqhfile      = 'ERAinterim_spfh2m',
+ lwdownfile   = 'ERAinterim_dlw',
+ swdownfile   = 'ERAinterim_dsw',
+ apressurefile= 'ERAinterim_msl',
+ runofffile   = 'APrunoff_dist100km_seasonal_mps.bin',
+#
+ &
+
+# *********************
+ &EXF_NML_03
+ exf_offset_atemp  = 273.15,
+ exf_inscal_swdown = -1.,
+ exf_inscal_lwdown = -1.,
+ exf_inscal_runoff = 1,
+ &
+
+# *********************
+ &EXF_NML_04
+ atemp_lon0    = 0.
+ atemp_lon_inc = 1.5
+ atemp_lat0    = -90.
+ atemp_lat_inc = 120*1.5
+ atemp_nlon    = 240
+ atemp_nlat    = 121
+#
+ precip_lon0    = 0.
+ precip_lon_inc = 1.5
+ precip_lat0    = -90.
+ precip_lat_inc = 120*1.5
+ precip_nlon    = 240
+ precip_nlat    = 121
+#
+ uwind_lon0    = 0.
+ uwind_lon_inc = 1.5
+ uwind_lat0    = -90.
+ uwind_lat_inc = 120*1.5
+ uwind_nlon    = 240
+ uwind_nlat    = 121
+#
+ vwind_lon0    = 0.
+ vwind_lon_inc = 1.5
+ vwind_lat0    = -90.
+ vwind_lat_inc = 120*1.5
+ vwind_nlon    = 240
+ vwind_nlat    = 121
+# 
+ aqh_lon0    = 0.
+ aqh_lon_inc = 1.5
+ aqh_lat0    = -90.
+ aqh_lat_inc = 120*1.5
+ aqh_nlon    = 240
+ aqh_nlat    = 121
+#
+ lwdown_lon0    = 0.
+ lwdown_lon_inc = 1.5
+ lwdown_lat0    = -90.
+ lwdown_lat_inc = 120*1.5
+ lwdown_nlon    = 240
+ lwdown_nlat    = 121
+#
+ swdown_lon0    = 0.
+ swdown_lon_inc = 1.5
+ swdown_lat0    = -90.
+ swdown_lat_inc = 120*1.5
+ swdown_nlon    = 240
+ swdown_nlat    = 121
+#
+ apressure_lon0    = 0.
+ apressure_lon_inc = 1.5
+ apressure_lat0    = -90.
+ apressure_lat_inc = 120*1.5
+ apressure_nlon    = 240
+ apressure_nlat    = 121
+#
+# runoff_lon0       = 0.0D0,
+# runoff_lon_inc    = 0.25D0,
+# runoff_lat0       = -90.0D0,
+# runoff_lat_inc    = 360*0.25,
+# runoff_nlon       = 1440,
+# runoff_nlat       = 361,
+ &
+
+# *********************
+ &EXF_NML_OBCS
+ obcsSstartdate1   = 19810101,
+ obcsSstartdate2   = 000000,
+ obcsSperiod       = -12.0,
+#
+ obcsNstartdate1   = 19810101,
+ obcsNstartdate2   = 000000,
+ obcsNperiod       = -12.0,
+#
+ obcsWstartdate1   = 19810101,
+ obcsWstartdate2   = 000000,
+ obcsWperiod       = -12.0,
+#
+ obcsEstartdate1   = 19810101,
+ obcsEstartdate2   = 000000,
+ obcsEperiod       = -12.0,
+#
+ siobSstartdate1   = 19810101,
+ siobSstartdate2   = 000000,
+ siobSperiod       = -12.0,
+#
+ siobNstartdate1   = 19810101,
+ siobNstartdate2   = 000000,
+ siobNperiod       = -12.0,
+#
+ siobWstartdate1   = 19810101,
+ siobWstartdate2   = 000000,
+ siobWperiod       = -12.0,
+#
+ siobEstartdate1   = 19810101,
+ siobEstartdate2   = 000000,
+ siobEperiod       = -12.0,
+ &
